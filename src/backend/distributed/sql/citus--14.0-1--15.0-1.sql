@@ -9,3 +9,8 @@
 #include "udfs/citus_internal_lock_colocation_id/15.0-1.sql"
 
 #include "udfs/citus_internal_acquire_placement_colocation_lock/15.0-1.sql"
+
+-- backup block UDFs
+#include "udfs/citus_block_writes_for_backup/15.0-1.sql"
+#include "udfs/citus_unblock_writes_for_backup/15.0-1.sql"
+#include "udfs/citus_backup_block_status/15.0-1.sql"
