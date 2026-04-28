@@ -52,12 +52,12 @@
 
 #include "distributed/adaptive_executor.h"
 #include "distributed/backend_data.h"
-#include "distributed/cluster_changes_block.h"
 #include "distributed/background_jobs.h"
 #include "distributed/causal_clock.h"
 #include "distributed/citus_depended_object.h"
 #include "distributed/citus_nodefuncs.h"
 #include "distributed/citus_safe_lib.h"
+#include "distributed/cluster_changes_block.h"
 #include "distributed/combine_query_planner.h"
 #include "distributed/commands.h"
 #include "distributed/commands/multi_copy.h"
