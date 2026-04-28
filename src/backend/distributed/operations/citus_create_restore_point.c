@@ -22,7 +22,7 @@
 #include "utils/builtins.h"
 #include "utils/pg_lsn.h"
 
-#include "distributed/backup_block.h"
+#include "distributed/cluster_changes_block.h"
 #include "distributed/connection_management.h"
 #include "distributed/listutils.h"
 #include "distributed/metadata_cache.h"

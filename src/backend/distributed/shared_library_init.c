@@ -52,7 +52,7 @@
 
 #include "distributed/adaptive_executor.h"
 #include "distributed/backend_data.h"
-#include "distributed/backup_block.h"
+#include "distributed/cluster_changes_block.h"
 #include "distributed/background_jobs.h"
 #include "distributed/causal_clock.h"
 #include "distributed/citus_depended_object.h"
@@ -511,7 +511,7 @@ _PG_init(void)
 
 	InitializeMaintenanceDaemon();
 	InitializeMaintenanceDaemonForMainDb();
-	InitializeBackupBlock();
+	InitializeClusterChangesBlock();
 
 	/* initialize coordinated transaction management */
 	InitializeTransactionManagement();
@@ -651,7 +651,7 @@ citus_shmem_request(void)
 	RequestAddinShmemSpace(MaintenanceDaemonShmemSize());
 	RequestAddinShmemSpace(CitusQueryStatsSharedMemSize());
 	RequestAddinShmemSpace(LogicalClockShmemSize());
-	RequestAddinShmemSpace(BackupBlockShmemSize());
+	RequestAddinShmemSpace(ClusterChangesBlockShmemSize());
 	RequestNamedLWLockTranche(STATS_SHARED_MEM_NAME, 1);
 	RequestAddinShmemSpace(StatCountersShmemSize());
 	RequestNamedLWLockTranche(SAVED_BACKEND_STATS_HASH_LOCK_TRANCHE_NAME, 1);

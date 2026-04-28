@@ -1440,35 +1440,6 @@ AS 'MODULE_PATHNAME', $$citus_create_restore_point$$;
 COMMENT ON FUNCTION pg_catalog.citus_create_restore_point(text)
 IS 'temporarily block writes and create a named restore point on all nodes';
 
--- distributed backup block
-CREATE OR REPLACE FUNCTION pg_catalog.citus_block_writes_for_backup(
-    timeout_ms int DEFAULT 300000)
-RETURNS boolean
-LANGUAGE C STRICT
-AS 'MODULE_PATHNAME', $$citus_block_writes_for_backup$$;
-COMMENT ON FUNCTION pg_catalog.citus_block_writes_for_backup(int)
-IS 'block distributed 2PC writes across the Citus cluster for backup';
-
-CREATE OR REPLACE FUNCTION pg_catalog.citus_unblock_writes_for_backup()
-RETURNS boolean
-LANGUAGE C STRICT
-AS 'MODULE_PATHNAME', $$citus_unblock_writes_for_backup$$;
-COMMENT ON FUNCTION pg_catalog.citus_unblock_writes_for_backup()
-IS 'release the distributed write block held for backup';
-
-CREATE OR REPLACE FUNCTION pg_catalog.citus_backup_block_status(
-    OUT state text,
-    OUT worker_pid int,
-    OUT requestor_pid int,
-    OUT block_start_time timestamptz,
-    OUT timeout_ms int,
-    OUT node_count int)
-RETURNS record
-LANGUAGE C STRICT
-AS 'MODULE_PATHNAME', $$citus_backup_block_status$$;
-COMMENT ON FUNCTION pg_catalog.citus_backup_block_status()
-IS 'return the current status of the distributed write block for backup';
-
 -- functions for giving node a unique identifier
 CREATE OR REPLACE FUNCTION pg_catalog.citus_version()
     RETURNS text
