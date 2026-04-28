@@ -406,9 +406,8 @@ CitusClusterChangesBlockWorkerMain(Datum main_arg)
 			CHECK_FOR_INTERRUPTS();
 
 			/* check if release was requested */
-			bool shouldRelease = false;
 			LWLockAcquire(&ClusterChangesBlockControl->lock, LW_SHARED);
-			shouldRelease = ClusterChangesBlockControl->releaseRequested;
+			bool shouldRelease = ClusterChangesBlockControl->releaseRequested;
 			LWLockRelease(&ClusterChangesBlockControl->lock);
 
 			if (shouldRelease)
